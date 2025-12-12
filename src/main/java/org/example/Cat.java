@@ -1,32 +1,48 @@
 package org.example;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+
+@Component //Spring obj instance automatically
 public class Cat {
 
-    private String name = "mi phyu";
-    private int age;
+    /*
+    1....first way by using bean
+     */
+    // @Value("Bo Ni") private String catName;
+    // private String catName = "Bo Ni"; // initialization variable
+    private String catName;
 
-//    public Cat(String name, int age) {
-//        this.name = name;
-//        this.age = age;
-//    }
-
-    public String getName() {
-        return name;
+    public Cat(@Value("Bo Wah") String catName) {
+        this.catName = catName;
+        System.out.println(catName + " is Constructor ==> First See");
     }
 
-    public int getAge() {
-        return age;
+    @Autowired
+    public void setCatName(@Value("Bo Kyr") String catName) {
+        this.catName = catName;
+        System.out.println(catName + " is setter or injection ===> Second See");
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @PostConstruct
+    public void init() {
+        this.catName = "Bo Tote";
+        System.out.println(catName + " is post construct ==> Third See");
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public String getCatName() {
+        return catName;
     }
+
+    /*
+    public void setCatName(String catName) {
+        this.catName = catName;
+    } //setter is not working in @Component , it's only for bean (who has full control over object creation)
+     */
+
 
 }
