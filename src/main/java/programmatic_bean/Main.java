@@ -34,6 +34,7 @@ public class Main {
 
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
+        // spring bean name , bean class, supplier and bean definition customizer
         context.registerBean("parrot1", Parrot.class,
                 () -> new Parrot("Ki Ki"),bc -> bc.setPrimary(true));
         /*
