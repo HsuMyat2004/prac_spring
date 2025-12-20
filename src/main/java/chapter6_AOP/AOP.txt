@@ -1,0 +1,42 @@
+AOP (Aspect-Oriented Programming) is one of the most popular programming concepts in Spring Core.
+As the name suggests, AOP focuses on cross-cutting concerns—functionality that affects multiple parts
+of an application, such as logging, security, and transactions, without being part of the core business logic.
+
+OOP is powerful, but it can lead to problems like code scattering (same code repeated in many places)
+and code tangling (business logic mixed with non-functional code like logging).
+To clearly separate business logic (functional code) from non-functional code (e.g., logging), developers use AOP.
+
+In many modules, we often need to inspect or apply concerns such as logging, security, or transaction management.
+AOP is best suited for handling these requirements in a clean and centralized way.
+
+ ************ Core Concepts of AOP ************
+
+There are three main concepts to remember:
+
+1. Pointcut
+→ Defines which methods should be intercepted (where the action applies).
+
+2. Advice
+→ Defines what action should be taken and when it should run.
+Types of advice:
+    1.Before
+    2.After
+    3.After Returning
+    4.After Throwing
+    5.Around
+
+3. JoinPoint
+→ Represents the execution of a method (the point where advice is applied).
+
+***** Proxy Mechanism in Spring AOP *****
+
+Spring AOP works using proxies:
+
+1. JDK Dynamic Proxy
+→ Used by default when the target class implements an interface.
+we can use a point cut with keyword both "target" and "this" for interface
+but we can only use point cut "target" for class (impl)
+
+2. CGLIB Proxy
+→ Used when the target class does not implement an interface.
+we can use point cut with both "target" and "this" for impl class without interface

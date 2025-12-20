@@ -1,9 +1,11 @@
-package chapter6.demo1;
+package chapter6_AOP.demo2;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan(basePackages = "chapter6.demo1")
+@ComponentScan
+@EnableAspectJAutoProxy
 public class ProjectConfig {
 }
