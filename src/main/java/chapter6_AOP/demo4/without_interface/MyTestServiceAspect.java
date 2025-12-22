@@ -11,10 +11,16 @@ import java.util.Arrays;
 @Component
 @Aspect
 public class MyTestServiceAspect {
-    @Pointcut("bean(myCurrencyTest)")
-    public void targetPointCut(){}
+   // @Pointcut("bean(myCurrencyTest)")
+   // public void targetPointCut(){}
 
-    @Before("targetPointCut()")
+    // access modifier can be included or not (allowed)
+    // other(return type, package, Class Name and methods and arguments must be included (*)
+    //@Pointcut("execution(* *.*.*.MyTestService.*(..))")
+    @Pointcut("execution(public * *.*.*.MyTestService.*(..))")
+    public void executionPointCut(){}
+
+    @Before("executionPointCut()")
     public void before(JoinPoint joinPoint){
         System.out.println("%s.%s method invoked with %s args"
                 .formatted(joinPoint.getTarget().getClass().getSimpleName(),

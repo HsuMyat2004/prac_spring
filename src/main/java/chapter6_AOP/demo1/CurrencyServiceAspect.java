@@ -23,7 +23,7 @@ public class CurrencyServiceAspect {
     @Pointcut("this(chapter6_AOP.demo1.CurrencyServiceImpl)")
     public void thisImplPointCut() {} // there is no reason to use "this" for impl class
 
-    //@Before("thisImplPointCut()")
+    @Before("thisImplPointCut()")
     public void beforeCurrencyAdvice(JoinPoint joinPoint) {
         System.out.println("%s.%s method invoke with %s arguments"
                 .formatted(joinPoint.getTarget().getClass().getName(), joinPoint.getSignature().getName() ,
