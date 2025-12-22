@@ -15,9 +15,9 @@ public class Main {
 
         try{
           Class<?> clazz = myTestService.getClass();
-          Method method = clazz.getMethod("test4");
+          Method method = clazz.getDeclaredMethod("test4", String.class);
           method.setAccessible(true);
-          method.invoke(myTestService);
+          method.invoke(myTestService,"::How are you");
         } catch (Exception e){
             e.printStackTrace();
         }

@@ -1,7 +1,5 @@
-package chapter6_AOP.demo4.without_interface;
-import org.springframework.stereotype.Service;
+package chapter6_AOP.simple_POJO;
 
-@Service("myCurrencyTest") //spring bean can't call directly the private method
 public class MyTestService {
     public void test1(String s){
         System.out.println("Test 1 " + s);
@@ -17,7 +15,7 @@ public class MyTestService {
     }
 
     private void test4(String s){
-        System.out.println("Private test4 method");
+        System.out.println("Private test4 method :: " + s);
     }
 }
 
